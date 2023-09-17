@@ -2,12 +2,136 @@
 <html>
 <body>
 
-<?php
-$color = "red";
-echo "My car is " . $color . "<br>";
-echo "My house is " . $color . "<br>";
-echo "My boat is " . $color . "<br>";
-?> 
+<!-- <div>
+  <label for="dateIN"> Date: </label><input type="date"
+id="dateIN">
+ </div>
+ <script>
+  document.getElementById("dateIN").valueAsDate = new Date() - 1;
+ </script> -->
 
+Date: <input type="text" id="dateIN">&#160&#160&#160&#160&#160&#160Discount: <input type="text" id="discount"><br>
+<br>RBI: <input type="text" id="RBI_IN">&#160&#160&#160&#160&#160&#160Cupsales: <input type="text" id="CUP"><br>
+<p><br>&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160Morning&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160Swing&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160GY</p>
+Net: &#160&#160&#160&#160&#160&#160<input type="text" id="Net_M"><input type="text" id="Net_S"><input type="text" id="Net_GY"><br>
+Bills: &#160&#160&#160&#160<input type="text" id="Bills_M"><input type="text" id="Bills_S"><input type="text" id="Bills_GY"><br>
+Over: &#160&#160&#160<input type="text" id="Over_M"><input type="text" id="Over_S"><input type="text" id="Over_GY"><br>
+Short: &#160&#160&#160<input type="text" id="Short_M"><input type="text" id="Short_S"><input type="text" id="Short_GY"><br>
+Others: <input type="text" id="Others_M"><input type="text" id="Others_S"><input type="text" id="Others_GY"><br>
+<br>Previous Bills payment: <input type="text" id="prev_bills"><br>Total Merchandise Sales: <input type="text" id="total_merch"><br>
+
+<br><button onclick="myFunction()">Generate Report</button><br>
+
+<br>Target Sales: <input type="text" id="target_Sale" value="1917597.91"><br>
+Total Sales: <input type="text" id="total_Sale"><br>
+Remaining: <input type="text" id="remaining_Sale"><br>
+Average: <input type="text" id="avg_Sale"><br>
+
+<br>Target Bills: <input type="text" id="target_Bills" value="5000000"><br>
+Total Bills: <input type="text" id="total_Bills2"><br>
+Remaining: <input type="text" id="remaining_Bills"><br>
+Average: <input type="text" id="avg_Bills"><br>
+
+<br>Remaining Days: <input type="text" id="remainingDay"><br>
+
+<script>
+function myFunction() {
+  var dateIN = document.getElementById("dateIN").value;
+  var discount = document.getElementById("discount").value;
+  var RBI = document.getElementById("RBI_IN").value;
+  var CUP = document.getElementById("CUP").value;
+
+  var Net_M = document.getElementById("Net_M").value;
+  var Net_S = document.getElementById("Net_S").value;
+  var Net_GY = document.getElementById("Net_GY").value;
+
+  var Bills_M = document.getElementById("Bills_M").value;
+  var Bills_S = document.getElementById("Bills_S").value;
+  var Bills_GY = document.getElementById("Bills_GY").value;
+
+  var Over_M = document.getElementById("Over_M").value;
+  var Over_S = document.getElementById("Over_S").value;
+  var Over_GY = document.getElementById("Over_GY").value;
+
+  var Short_M = document.getElementById("Short_M").value;
+  var Short_S = document.getElementById("Short_S").value;
+  var Short_GY = document.getElementById("Short_GY").value;
+
+  var Others_M = document.getElementById("Others_M").value;
+  var Others_S = document.getElementById("Others_S").value;
+  var Others_GY = document.getElementById("Others_GY").value;
+
+  // var Bills_M = document.getElementById("Bills_M").value;
+  // var Bills_S = document.getElementById("Bills_S").value;
+  // var Bills_GY = document.getElementById("Bills_GY").value;
+
+  var totalNet = parseInt(Net_M) + parseInt(Net_S) + parseInt(Net_GY);
+  var totalBills = parseInt(Bills_M) + parseInt(Bills_S) + parseInt(Bills_GY);
+
+  var totalOver = parseInt(Over_M) + parseInt(Over_S) + parseInt(Over_GY);
+  var totalShort = parseInt(Short_M) + parseInt(Short_S) + parseInt(Short_GY);
+
+  var RBI_plus_CUP =  parseInt(RBI) + parseInt(CUP);
+
+  document.getElementById("dateOut1").innerHTML = dateIN;
+  document.getElementById("dateOut2").innerHTML = dateIN;
+  document.getElementById("dateOut3").innerHTML = dateIN;
+  document.getElementById("dateOut4").innerHTML = dateIN;
+  document.getElementById("dateOut5").innerHTML = dateIN;
+  document.getElementById("dateOut6").innerHTML = dateIN;
+  document.getElementById("discountOUT").innerHTML = discount;
+  document.getElementById("RBI_OUT").innerHTML = RBI;
+  document.getElementById("RBI_plus_CUP").innerHTML = RBI_plus_CUP;
+
+  document.getElementById("demo1").innerHTML = Net_M;
+  document.getElementById("demo2").innerHTML = Net_S;
+  document.getElementById("demo3").innerHTML = Net_GY;
+  document.getElementById("demo4").innerHTML = Bills_M;
+  document.getElementById("demo5").innerHTML = Bills_S;
+  document.getElementById("demo6").innerHTML = Bills_GY;
+  document.getElementById("totalNet").innerHTML = totalNet;
+  document.getElementById("totalBills").innerHTML = totalBills;
+  document.getElementById("totalOver").innerHTML = totalOver;
+  document.getElementById("totalShort").innerHTML = totalShort;
+
+  document.getElementById("total_Bills1").innerHTML = totalBills + parseInt(document.getElementById("prev_bills").value);
+  document.getElementById("total_Bills2").innerHTML = totalBills + parseInt(document.getElementById("prev_bills").value);
+  document.getElementById("totalMerch").innerHTML = document.getElementById("total_merch").value;
+}
+</script>
+
+<p>4839, Bongabon Fusion Gas
+<br>Good Morning po!</p>
+<p>Sales update as of <ins id="dateOut1"></ins> </p>
+
+<p>Total Morning Sales - <ins id="demo1"></ins> <br>Total Bills payment - <ins id="demo4"></ins> </p>
+
+<p>Total Swing Sales - <ins id="demo2"></ins> <br>Total Bills payment - <ins id="demo5"></ins> </p>
+
+<p>Total GY Sales - <ins id="demo3"></ins> <br>Total Bills payment - <ins id="demo6"></ins> </p>
+
+<p>Total Over - <ins id="totalOver"></ins> <br>Total Short - <ins id="totalShort"></ins> </p>
+
+<p>TotalBillsPayment : <ins id="totalBills1"></ins> <br>TotalNetSales : <ins id="totalNet"></ins> </p>
+
+<p>Discount Report : <ins id="dateOut2"></ins> - <ins id="discountOUT"></ins> <br>Cancel Cash Drop - none<br>Redeem Report - <ins id="dateOut3"></ins><br>Receipt Refund - <ins id="dateOut4"> </p>
+
+<p>RBI : <ins id="RBI_OUT"></ins> <br>  RBI with Cupsales : <ins id="RBI_plus_CUP"></ins> </p>
+
+<p>Total MerchandiseSales as of <ins id="dateOut5"></ins><br> : <ins id="totalMerch"></ins></p>
+<p>Total BillsPayment as of <ins id="dateOut6"></ins><br> : <ins id="total_Bills"></ins></p>
+
+<p>TARGET NET SALES
+<br>Target Sales : <ins id="targetSale"></ins>
+<br>Total Sales : <ins id="totalSale"></ins>
+<br>Remaining : <ins id="remainingSale"></ins>
+<br>Avg : <ins id="avgSale"></ins> / day ( within <ins id="remainingDay1"></ins> days)</p>
+
+<p>TARGET BILLS PAYMENT
+<br>Target Bills : <ins id="targetBills"></ins>
+<br>Total Bills : <ins id="totalBills2"></ins>
+<br>Remaining : <ins id="remainingBills"></ins>
+<br>Avg : <ins id="avgBills"></ins> / day (within <ins id="remainingDay2"></ins> days)</p><br>
 </body>
 </html>
+
