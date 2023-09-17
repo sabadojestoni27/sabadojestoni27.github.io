@@ -1,48 +1,70 @@
-<!DOCTYPE html>
-<head>
-<title> Write a simple calculator program in PHP using the switch statement by T4Tutorials.com
- </title>
-</head>
-<?php
-$FirstNumber = $_POST['FirstNumber'];
-$SecondNumber = $_POST['SecondNumber'];
-$operator = $_POST['operator'];
-$CalculatorResult = '';
-if (is_numeric($FirstNumber) && is_numeric($SecondNumber)) {
-switch ($operator) {
-case "Sum":
-$CalculatorResult = $FirstNumber + $SecondNumber;
-break;
-case "Subtraction":
- $CalculatorResult = $FirstNumber - $SecondNumber;
-break;
-case "Multiplication":
-$CalculatorResult = $FirstNumber * $SecondNumber;
-break;
-case "Division":
-$CalculatorResult = $FirstNumber / $SecondNumber;
-}
-}
-?>
-
-<body>
-<div id="page-wrap">
-<h1>PHP - Simple Calculator Program</h1>
-<form action="" method="post" id="quiz-form">
-<p>
-<input type="number" name="FirstNumber" id="FirstNumber" required="required" value="<?php echo $FirstNumber; ?>" /> <b>First Number</b>
-</p>
-<p>
-<input type="number" name="SecondNumber" id="SecondNumber" required="required" value="<?php echo $SecondNumber; ?>" /> <b>Second Number</b>
-</p>
-<p>
-<input readonly="readonly" name="CalculatorResult" value="<?php echo $CalculatorResult; ?>"> <b>CalculatorResult</b>
-</p>
-<input type="submit" name="operator" value="Sum" />
-<input type="submit" name="operator" value="Subtraction" />
-<input type="submit" name="operator" value="Multiplication" />
-<input type="submit" name="operator" value="Division" />
-</form>
-</div>
-</body>
+<!-- code by webdevtrick ( https://webdevtrick.com) -->
+<html>
+	<head>
+		<title>Simple Calculator In PHP | Webdevtrick.com</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		
+		<div class="container" style="margin-top: 50px">
+		
+			<?php
+			
+				// If the submit button has been pressed
+				if(isset($_POST['submit']))
+				{
+					// Check number values
+					if(is_numeric($_POST['number1']) && is_numeric($_POST['number2']))
+					{
+						// Calculate total
+						if($_POST['operation'] == 'plus')
+						{
+							$total = $_POST['number1'] + $_POST['number2'];	
+						}
+						if($_POST['operation'] == 'minus')
+						{
+							$total = $_POST['number1'] - $_POST['number2'];	
+						}
+						if($_POST['operation'] == 'multiply')
+						{
+							$total = $_POST['number1'] * $_POST['number2'];	
+						}
+						if($_POST['operation'] == 'divided by')
+						{
+							$total = $_POST['number1'] / $_POST['number2'];	
+						}
+						
+						// Print total to the browser
+						echo "<h1>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals {$total}</h1>";
+					
+					} else {
+						
+						// Print error message to the browser
+						echo 'Numeric values are required';
+					
+					}
+				}
+			// end PHP. Code by webdevtrick.com
+			?>
+		    
+		    <!-- Calculator form by webdevtrick.com -->
+		    <form method="post" action="calculator.php">
+		        <input name="number1" type="text" class="form-control" style="width: 150px; display: inline" />
+		        <select name="operation">
+		        	<option value="plus">Plus</option>
+		            <option value="minus">Minus</option>
+		            <option value="multiply">Multiply</option>
+		            <option value="divided by">Devide</option>
+		        </select>
+		        <input name="number2" type="text" class="form-control" style="width: 150px; display: inline" />
+		        <input name="submit" type="submit" value="Calculate" class="btn btn-primary" />
+		    </form>
+	    
+		</div>
+	
+	</body>
 </html>
